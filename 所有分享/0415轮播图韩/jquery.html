@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery</title>
+	<script type="text/javascript" src="jquery-3.2.0.js"></script>
+	<style>
+		div{
+			width: 730px;
+			height: 454px;
+			margin: 0 auto;
+			position: relative;
+			overflow: hidden;
+		}
+		ul{
+			list-style-type: none;
+			padding: 0;
+		}
+		ul.list{
+			position: relative;
+		}
+		ul.list>li{
+			position: absolute;
+			overflow: hidden;
+		}
+		ul.list>li:first-child{
+			z-index: 2;
+		}
+		ul.nav{
+			position: absolute;
+			bottom: 0;
+			left: 300px;
+			z-index: 999;
+		}
+		ul.nav li{
+			float: left;
+			margin: 0 2px;
+			color:#fff;
+			border-radius: 50%;
+			width: 18px;
+			height: 18px;
+			background-color: #666;
+			line-height: 18px;
+			text-align: center;
+			cursor: pointer;
+		}
+		ul.nav li.curr{
+			background-color: #f00;
+		}
+		button{
+			position: absolute;
+			z-index: 3;
+			top: 50%;
+			margin-top: -5px;
+			z-index: 999;
+		}
+		.pre{ left: 30px; }
+		.nex{ right: 50px;}
+	</style>
+	<script>
+		$(function(){
+			var current = 0;
+			var zindex = 1;
+			$('.nav').on('click','li',function(){
+				$('.nav li').removeClass('curr');
+				$(this).addClass('curr');
+				current = $('.nav li').index(this);
+				$('.list li').eq(current).css('zIndex',++zindex).width(0).animate({width:730},1000);
+			})
+			function next(n){
+				if(n){
+					current++;
+					if(current > 4)current = 0;
+					$('.nav li').removeClass('curr').eq(current).addClass('curr');
+					$('.list li').eq(current).css('zIndex',++zindex).width(0).animate({width:730},1000);
+				}else{
+					current--;
+					if(current < 0)current = 4;
+					$('.nav li').removeClass('curr').eq(current).addClass('curr');
+//					$('.list li').eq(current).css('zIndex',++zindex).css('left',730).animate({left:0},1000);
+					$('.list li').eq(current).css('zIndex',++zindex).end().css({width:730});
+					$('.list li').eq(current+1).css('zIndex',zindex+1).animate({width:0},1000);
+				}
+			}
+			var timer=setInterval(function(){next(true)},2000);
+			$('div').hover(
+				function(){clearInterval(timer)},
+				function(){timer=setInterval(function(){next(true)},2000)}
+			);
+			$('.nex').click(function(){next(true)});
+			$('.pre').click(function(){next(false)});
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<ul class="list">
+			<li><a href="#"><img src="img/1.jpg" alt="a" /></a></li>
+			<li><a href="#"><img src="img/2.jpg" alt="a" /></a></li>
+			<li><a href="#"><img src="img/3.jpg" alt="a" /></a></li>
+			<li><a href="#"><img src="img/4.jpg" alt="a" /></a></li>
+			<li><a href="#"><img src="img/5.jpg" alt="a" /></a></li>
+		</ul>
+		<ul class="nav">
+			<li class="curr">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<button class="pre">&lt;</button>
+		<button class="nex">&gt;</button>
+	</div>
+</body>
+</html>
