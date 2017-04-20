@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>impress</title>
+    <link href="css/impress-demo.css" rel="stylesheet" />
+</head>
+<!--
+    data-x：幻灯片的X坐标
+    data-y：幻灯片的Y坐标
+    data-z：幻灯片的Z坐标
+    data-scale：幻灯片显示的缩放比例
+    data-rotate-x：为3D使用，这个度数设置它相对X轴旋转多少度。
+    data-rotate-y：为3D使用，这个度数设置它相对Y轴旋转多少度。
+    data-rotate-z：为3D使用，这个度数设置它性对Z轴旋转多少度。
+-->
+<body>
+	
+<div id="impress">
+
+    <div id="bored" class="step slide" data-x="-1000" data-y="-1500" >
+        <h1 class="thinks">impress.js</h1>
+    </div>
+
+    <div id="title" class="step" data-x="0" data-y="0" data-scale="2">
+        <h3>1.效果分析</h3>
+        <h3>2.原理分析</h3>
+        <h3>3.实现方法</h3>
+        <h3><a href="../impress/new_file.html">4.小实例</a></h3>
+    </div>
+
+    <div id="its" class="step" data-x="850" data-y="3000" data-rotate="90" data-scale="4">
+        <h3>IETF:</h3>
+        <span>Internet Engineering Task Force<br/>
+            <b>互联网工程任务组</b><br>
+        </span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;负责定义并管理因特网所有技术:包括用于数据传输的IP协议、让域名与IP地址匹配的域名系统（DNS）、用于发送邮件的简单邮件传输协议（SMTP）等,93年发布的html并非标准，但反响很好。</p>
+    </div>
+
+    <div id="big" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="6">
+        <span class="thoughts">HTML 2.0</span>
+        <h1><h2>发布者：</h2>W3C</h1>
+        <p>1995年11月</p>
+    </div>
+
+    <div id="tiny" class="step" data-x="2825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">
+        <b>W3C</b><br>
+        <span>World Wide Web Consortium（万维网联盟）</span><br>
+        <span>w3c理事会</span>
+        <p>1994年10月在麻省理工学院计算机科学实验室成立，是Web技术领域内最具权威的中立的机构，关于Web的一切标准均由此论坛讨论制定。</p>
+    </div>
+
+    <div id="ing" class="step" data-x="3500" data-y="-850" data-rotate="270" data-scale="6">
+        <p><b class="scaling">HTML3.2</b>1996年1月<br>
+           <b class="rotating">HTML4.0</b>1997年12月<br>
+           <b class="positioning">HTML4.01</b>1999年12月 
+        </p>
+    </div>
+
+    <div id="imagination" class="step" data-x="6700" data-y="-300" data-scale="6">
+        <p><b>XHTML1.0</b>&nbsp;&nbsp;2000年<br>
+           <b>XHTML1.1</b>&nbsp;&nbsp;2001年<br>
+           <b class="imagination">XHTML2.0</b>&nbsp;&nbsp;?</p>
+    </div>
+
+    <div id="source" class="step" data-x="6300" data-y="2000" data-rotate="20" data-scale="4">
+        <p>浏览器厂商在干啥?</p>
+        <q><a href="#">HTML5草案</a><span class="yeor">（2004年）</span><br>WHATWG</q>
+
+    </div>
+
+    <div id="one-more-thing" class="step" data-x="6000" data-y="4000" data-scale="2">
+        <span>网页超文本应用技术工作组</span><br>
+        <p class="whatwg">网页超文本应用技术工作小组是一个以推动网络HTML 5标准为目的而成立的组织。在2004年，由Opera、Mozilla基金会和苹果这些浏览器厂商组成。</p>
+    </div>
+
+    <div id="its-in-3d" class="step h5bg" data-x="6200" data-y="4300" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p>
+            <span class="you">H</span>
+            <span class="noticed">T</span>
+            <span class="its">M</span>
+            <span class="in">L</span>
+            <b>5</b>
+            <span class="have">正式发布</span>
+        </p><br>
+        <span class="footnote">2008年</span><br>
+        <span class="footnote">W3C&WHATWG</span>
+    </div>
+
+    <div class="step slide" data-x="0" data-y="-1500"  data-y="-550" data-rotate="90">
+        <h1 class="thinks">谢谢！</h1>
+    </div>
+	<!--全景图，可要可不要-->
+	<div id="overview" class="step" data-scale="10">
+   	</div>
+
+</div>
+
+<!-- 开始的提示  -->
+        
+    <div class="fallback-message">
+        <p>浏览器不支持时的提示</p>
+    </div>
+	<div class="hint">
+	    <p>分享者：韩应波</p>
+	</div>
+	
+<!-- 初始化 -->
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>
+
