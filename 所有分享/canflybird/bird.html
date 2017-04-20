@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				 overflow: hidden; 
+				background-color: #ccc;
+			}
+			#dbird{
+				position: absolute;
+			}
+			img{
+				width: 150px;
+				height: 150px;	
+			}
+			 .dir_37{
+				transform: rotateY(180deg);
+			}
+			.dir_38{
+				transform:rotate(-60deg);
+			}
+			.dir_40{
+				transform:rotate(60deg);
+			} 
+		</style>
+		<script src="jquery-3.2.0.js"></script>
+		<script>
+			$(function(){
+				var bird=$("#dbird");//1、找到小鸟对象
+				var pos=bird.offset();//2、获得小鸟方位offset() 方法设置或返回被选元素相对于文档的偏移坐标。
+				var birdSize={width:bird.width(),height:bird.height()};
+				//3、获取到小鸟尺寸
+				var speed=10;//4、设置小鸟移动速度 px
+				 //7、
+				 var keyrecord=39;//默认向右飞
+				$(document).keydown(function(even){
+					var key=even.keyCode;//5、得到键盘事件n
+					//8
+					 if(key!=keyrecord){
+					 	bird.removeClass().addClass("dir_"+key);//移除原来的class，添加新的class
+					 }
+					 keyrecord=key;
+				switch(key){
+					//6、控制小鸟移动方向
+					case 37://向左移动
+					pos.left-=speed;
+					if(pos.left<=-birdSize.width){
+						pos.left=$(window).width();
+					}
+					break;
+					case 38://向上移动
+					pos.top-=speed;
+					if(pos.top<=-birdSize.height){
+						pos.top=$(window).height();
+					}
+					break;
+					case 39://向右移动
+					pos.left+=speed;
+					if(pos.left>=$(window).width()){
+						pos.left=-birdSize.width;//浏览器宽度>小鸟左边宽度的时候，返回右边
+					}
+					break;
+					case 40://向下移动
+					pos.top+=speed;
+					if(pos.top>=$(window).height()){
+						pos.top=-birdSize.height;
+					}
+					break;
+				}
+				bird.offset(pos);
+				});
+			});
+		</script>
+		</head>
+	<body>
+		<div id="dbird">
+			<img src="images/bird.gif">
+		</div>
+	</body>
+</html>
